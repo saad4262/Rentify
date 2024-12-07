@@ -1,0 +1,70 @@
+//buildscript {
+//    ext.kotlin_version = '1.8.0' // Update this to the version that matches your libraries, e.g., 1.8.0
+//
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//
+//    dependencies {
+//        classpath "com.android.tools.build:gradle:7.4.0" // Ensure you have the correct Android Gradle Plugin version
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Add the Kotlin Gradle Plugin
+//    }
+//}
+//
+//allprojects {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+//
+//rootProject.buildDir = "../build"
+//subprojects {
+//    project.buildDir = "${rootProject.buildDir}/${project.name}"
+//}
+//subprojects {
+//    project.evaluationDependsOn(":app")
+//}
+//
+//tasks.register("clean", Delete) {
+//    delete rootProject.buildDir
+//}
+//
+//rootProject.buildDir = "../build"
+//subprojects {
+//    project.buildDir = "${rootProject.buildDir}/${project.name}"
+//}
+//subprojects {
+//    project.evaluationDependsOn(":app")
+//}
+//
+//tasks.register("clean", Delete) {
+//    delete rootProject.buildDir
+//}
+buildscript {
+    ext.kotlin_version = '1.8.0' // Ensure the Kotlin version matches your dependencies
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.0" // Make sure you have the correct Android Gradle Plugin version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Kotlin Gradle Plugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build" // Defines the build directory for the root project
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}" // Defines the build directory for each subproject
+    project.evaluationDependsOn(":app") // Ensures the app module is evaluated before others
+}
